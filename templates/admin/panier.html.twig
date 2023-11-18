@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <table class="table table-primary table-striped">
+        <thead>
+
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Photo</th>
+            <th scope="col"><span class="btn btn-secondary">-</span></th>
+            <th scope="col">Quantité</th>
+            <th scope="col"><span class="btn btn-secondary">+</span></th>
+            <th scope="col" >annuler</th>
+        </tr>
+
+        </thead>
+        <tbody>
+
+        {% for item in panier  %}
+            
+     
+            <tr>
+                <th scope="row">{{  item.produit.id  }}</th>
+                <td>{{  item.produit.nom  }}</td>
+                <td>{{  item.produit.prix  }}€</td>
+                <td><img src="{{ asset('upload/')~item.produit.photo }}" width="100" alt=""></td>
+                <td><a href="{{ path('retraitPanier', {'id': item.produit.id}) }}" class="btn btn-info">-</a>
+                </td>
+                <td>{{  item.quantite  }}</td>
+                <td><a href="{{ path('ajoutPanier', {'id': item.produit.id}) }}" class="btn btn-info">+</a></td>
+                <td><a href="{{ path('supprimer', {'id': item.produit.id}) }}" class="btn btn-warning">annuler</a></td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p><h2>Montant total:</h2>{{  total  }}€</p>
+
+    <a href="{{ path('destroy') }}" class="btn btn-warning">vider panier</a>
+      {% if app.user %}
+    <a href="{{ path('commande') }}" class="btn btn-success">Commander</a>
+     {% else  %}
+         <a href="{{ path('login') }}" class="btn btn-success">Connectez vous</a>
+
+        
+  {% endif %}
+
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

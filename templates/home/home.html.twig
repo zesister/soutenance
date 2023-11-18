@@ -1,10 +1,95 @@
-{% extends 'base.html.twig' %}
+{%  extends 'base.html.twig'   %}
+
+{% block title %}
+    {{  parent()  }}accueil
+{% endblock %}
+
 
 {% block body %}
 
+<video id="background-video" autoplay loop muted>
+
+<source src="../images/MODE.mp4" type="video/mp4"></video>
+
+
+<img src="../images/img3.jpg">
+
+
+
+
+
+    <div class="produits">
+
+        {% for produit in produits %}
+            <div class="card col-md-4 m-4 p-0 rounded border-success mb-3" style="max-width: 15rem;">
+                <img height="130" src="{{ asset('upload/')~produit.photo }}" alt="">
+                <div class="card-header ">{{  produit.nom  }}</div>
+                <div class="card-body">
+                    <h4 class="card-price">{{  produit.prix  }}€</h4>
+                    <p class="card-text">{{  produit.description | default('Aucune description pour ce produit')  }}</p>
+                </div>
+                <a href="{{ path('ajoutAvis', {'id': produit.id}) }}" class="btn btn-info">Laisser un avis</a>
+                <a href="{{ path('ajoutPanier', {'id': produit.id}) }}" class="btn btn-warning">Ajouter au panier</a>
+            </div>
+            
+        {% endfor %}
+ </div>
+
+
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Inscrivez-vous à notre newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example29" class="form-control" />
+              <label class="form-label" for="form5Example29">Email address</label>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              S'abonner
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a class="text-white" href="#">modetry.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+
+
+
+
+
+
 {% endblock %}
-
-{% block title %}
-
-{% endblock %}
-

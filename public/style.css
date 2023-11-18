@@ -1,0 +1,84 @@
+
+
+.navbar-nav{
+    height: 50px;
+   
+}
+/*.photos img {
+    height: 450px; 
+    width: 100%;
+    margin-top: 2%;
+}*/
+
+.produits{
+    display: flex;
+    justify-content: space-around;
+   
+}
+
+
+
+
+
+
+.footers{
+    
+    height: 100px;
+width: 100%;
+
+
+    position: relative;
+    
+    color: white;
+    width: 52%;
+}
+
+
+P{
+    margin-bottom: 0;
+}
+
+
+/*.text-slogan{
+    display: flex;
+    justify-content: space-around;
+    background-color: blue;
+    height: 200px;
+    border-radius: 15px;
+    width: 100px;
+    margin: auto 0;
+}
+
+ .beaute h1{
+  margin-bottom:  0;
+  }
+
+  .beaute small{
+   color: orange;
+    }
+    .contact small{
+        text-align: center;
+    }*/
+
+    .entete-image{
+        display: flex;
+        justify-content: center;
+        justify-content: space-around;
+    }
+
+    .entete-image img{
+        height: 120px;
+        width: 100px;
+    }
+    
+
+
+#background-video {
+    height: 450px; 
+    width: 100%;
+    margin: 0;
+    
+    }
+    
+    
+

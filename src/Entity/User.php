@@ -44,6 +44,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = ['ROLE_USER'];
 
+    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
+    private Collection $commande;
+
+    public function __construct()
+    {
+        $this->commande = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -130,6 +138,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return $this->email;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommande(): Collection
+    {
+        return $this->commande;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commande->contains($commande)) {
+            $this->commande->add($commande);
+            $commande->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commande->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUtilisateur() === $this) {
+                $commande->setUtilisateur(null);
+            }
+        }
+
+        return $this;
     }
 
 }
